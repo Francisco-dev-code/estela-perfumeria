@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estela, perfumeria online con catalogo, pedidos y devoluciones.">
+  <title>Estela | Perfumeria online</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido principal</a>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">E</span>
+      <div>
+        <h1>Estela</h1>
+        <p>Perfumeria de autor</p>
+      </div>
+    </div>
+    <nav aria-label="Navegacion principal">
+      <button class="nav-link" data-view="catalogo">Catalogo</button>
+      <button class="nav-link" data-view="pedidos">Mis pedidos</button>
+      <button class="nav-link" data-view="admin" id="nav-admin" hidden>Administracion</button>
+    </nav>
+    <div class="session" id="session">
+      <span id="session-name">Sin sesion</span>
+      <button class="btn ghost" id="btn-login">Ingresar</button>
+      <button class="btn ghost" id="btn-logout" hidden>Salir</button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section id="view-catalogo" class="view" aria-labelledby="titulo-catalogo">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Coleccion 2026</p>
+          <h2 id="titulo-catalogo">Encuentra tu fragancia</h2>
+          <p>Perfumes nacionales y de autor, con stock real y despacho a todo Chile.</p>
+        </div>
+        <form class="search" role="search" id="form-buscar">
+          <label for="buscar">Buscar por nombre o marca</label>
+          <div class="search-row">
+            <input id="buscar" name="q" type="search" placeholder="Ej: ambar" autocomplete="off">
+            <button class="btn" type="submit">Buscar</button>
+          </div>
+        </form>
+      </div>
+      <p class="status" id="catalogo-status" role="status" aria-live="polite"></p>
+      <div class="grid" id="catalogo"></div>
+    </section>
+
+    <section id="view-pedidos" class="view" hidden aria-labelledby="titulo-pedidos">
+      <h2 id="titulo-pedidos">Mis pedidos</h2>
+      <p class="status" id="pedidos-status" role="status" aria-live="polite"></p>
+      <div id="pedidos" class="stack"></div>
+    </section>
+
+    <section id="view-admin" class="view" hidden aria-labelledby="titulo-admin">
+      <h2 id="titulo-admin">Administracion</h2>
+      <div class="admin-grid">
+        <form id="form-producto" class="card">
+          <h3>Nuevo producto</h3>
+          <label for="p-nombre">Nombre</label>
+          <input id="p-nombre" required maxlength="120">
+          <label for="p-marca">Marca</label>
+          <input id="p-marca" required maxlength="80">
+          <label for="p-desc">Descripcion</label>
+          <textarea id="p-desc" maxlength="600" rows="3"></textarea>
+          <label for="p-precio">Precio CLP</label>
+          <input id="p-precio" type="number" min="1" step="1" required>
+          <label for="p-stock">Stock</label>
+          <input id="p-stock" type="number" min="0" step="1" required>
+          <button class="btn" type="submit">Guardar producto</button>
+          <p class="status" id="admin-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="card">
+          <h3>Pedidos de clientes</h3>
+          <div id="admin-pedidos" class="stack"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="cart" id="cart" aria-labelledby="titulo-carrito" hidden>
+    <div class="cart-head">
+      <h2 id="titulo-carrito">Tu carrito</h2>
+      <button class="btn ghost" id="cerrar-carrito" aria-label="Cerrar carrito">Cerrar</button>
+    </div>
+    <div id="cart-items"></div>
+    <p class="total">Total: <strong id="cart-total">$0</strong></p>
+    <button class="btn wide" id="btn-comprar">Confirmar pedido</button>
+    <p class="status" id="cart-status" role="status" aria-live="polite"></p>
+  </aside>
+
+  <dialog id="dialog-login" aria-labelledby="login-title">
+    <form method="dialog" class="login-form" id="form-login">
+      <h2 id="login-title">Ingresar a Estela</h2>
+      <label for="email">Correo</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Clave</label>
+      <input id="password" type="password" autocomplete="current-password" minlength="8" required>
+      <p class="hint">Demo: cliente@estela.cl / Cliente123!</p>
+      <p class="status" id="login-status" role="alert"></p>
+      <div class="actions">
+        <button class="btn" value="login" id="btn-entrar" type="submit">Entrar</button>
+        <button class="btn ghost" value="cancel" type="submit">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer>
+    <p>Estela Perfumeria · Proyecto academico ISY1102 · Datos de prueba</p>
+  </footer>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
